@@ -1,0 +1,114 @@
+body{
+  font-family: Courier New;
+  font-weight: bold;
+}
+#logo{
+  width: 100px;
+  height: 100px;
+}
+#lt{
+  text-align: center;
+  color: green;
+}
+#lt2{
+  text-align: center;
+  color: green;
+}
+a{
+  display: block;
+  text-decoration: none;
+  color: black;
+}
+#ab{
+  display:block;
+  margin-top: 2px;
+  padding: 4px;
+  border-top-right-radius: 30%;
+  border-bottom-left-radius: 30%;
+}
+#whatsapp{
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 20px;
+}
+#ab:hover{
+  font-size: 17px;
+  margin-top: 2px;
+  background-color: lightgreen;
+  
+}
+#Welcome{
+  text-align: center;
+  color: green;
+}
+#whatsapp{
+  margin-top: 3px;
+}
+section{
+  border:solid 3px green;
+  margin-top: 9px;
+  padding: 7px;
+  border-radius: 5%;
+}
+.service{
+  border: 2px solid green;
+  margin-top: 3px;
+  padding: 2px;
+  border-radius: 4%;
+}
+#s{
+  text-align: center;
+  color: green;
+}
+.active{
+  background-color: green;
+}
+#log{
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
+@media screen and (min-width:1024px){
+  body{
+    font-size: 30px;
+  }
+  section{
+  border:solid 3px green;
+  padding: 7px;
+  border-radius: 5%;
+  display: inline-block;
+  width: 40%;
+  height: 40%;
+}
+.service{
+  border: 2px solid green;
+  margin-top: 3px;
+  padding: 2px;
+  border-radius: 4%;
+  display: inline-block;
+  width: 40%;
+  height: 40%;
+}
+#ab{
+  display:inline-block;
+  margin-top: 2px;
+  padding: 4px;
+  border-top-right-radius: 30%;
+  border-bottom-left-radius: 30%;
+  font-size: 25px;
+}
+#whatsapp{
+  margin-top: 3px;
+  font-size: 25px;
+}
+#logo{
+  width: 200px;
+  height: 250px;
+  margin-bottom: 4px;
+}
+#log{
+  width: 200px;
+  height: 250px;
+  margin: 0 auto;
+}
+}
