@@ -77,8 +77,9 @@ section{
   padding: 7px;
   border-radius: 5%;
   display: inline-block;
-  width: 40%;
-  height: 40%;
+  width: 30%;
+  height: 30%;
+  margin-top: 5px;
 }
 .service{
   border: 2px solid green;
@@ -86,7 +87,52 @@ section{
   padding: 2px;
   border-radius: 4%;
   display: inline-block;
-  width: 40%;
+  width: 30%;
+  height: 30%;
+}
+#ab{
+  display:inline-block;
+  margin-top: 2px;
+  padding: 4px;
+  border-top-right-radius: 30%;
+  border-bottom-left-radius: 30%;
+  font-size: 25px;
+}
+#whatsapp{
+  margin-top: 3px;
+  font-size: 25px;
+}
+#logo{
+  width: 200px;
+  height: 250px;
+  margin-bottom: 4px;
+}
+#log{
+  width: 200px;
+  height: 250px;
+  margin: 0 auto;
+}
+}
+@media screen and (min-width:780px){
+  body{
+    font-size: 30px;
+  }
+  section{
+  border:solid 3px green;
+  padding: 7px;
+  border-radius: 5%;
+  display: inline-block;
+  width: 45%;
+  height: 40%;
+  margin-top: 5px;
+}
+.service{
+  border: 2px solid green;
+  margin-top: 3px;
+  padding: 2px;
+  border-radius: 4%;
+  display: inline-block;
+  width: 45%;
   height: 40%;
 }
 #ab{
