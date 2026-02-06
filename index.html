@@ -1,36 +1,460 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TROSCHURCH</title>
-  <link rel="stylesheet" href="rock.css">
-  </head>
-  <div id="log"><img src="Logo.png" id="logo"></div>
-  <h3 id="lt">THE ROCK OF SALVATION CHURCH</h3>
-  <h2 id="lt2">(TROSC)</h2>
-  <button id="ab" class="active"><a href="index.html">home</a></button>
-  <button id="ab"><a href="service.html">services</a></button>
-  <button id="ab"><a href="upcoming.html">upcoming events</a></button>
-  <button id="ab"><a href="about.html">contact/about</a></button><br>
-  <section>
-<h4 id="Welcome">Welcome to The Rock of Salvation Church (TROSC)</h4>
-A place where lives are transformed, hope is restored, and Jesus is exalted.<br>
-</section>
-<section>
-<h4 id="Welcome">JOIN US THIS WEEK</h4>  
-Experience heartfelt worship, sound teaching, and a community that feels like family.
-</section>
-<section>
-<h4 id="Welcome">WHAT WE BELIEVE:</h4>
-We believe Jesus is the Rock of our salvation and the foundation of our lives. Through the Word, worship, and fellowship, we grow in grace and truth.
-</section>
-<section>
-<h4 id="Welcome">*NEW HERE?*</h4>  
-We’d love to meet you. Click below to  get connected<br>
-<a href="https://wa.me/2349021907518?text=Hi%20The%20Rock%20 of%20Salvation%20Church%2C%20I'm%20interested%20in%20visiting%20your%20church" target="_blank" style="position:fixed; bottom:80px; right:20px; background:#25d366; color:white; width:60px; height:60px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:30px; box-shadow:0 4px 10px rgba(0,0,0,0.3); z-index:1000;">💬</a>
-</section>
-<footer>©️2025<p><a href="privacy.html"style="text-decoration:underline; color:blue; font-weight:bold;" target="_blank">Privacy Policy</a></p>
-<p><a href="terms-and-conditons.html"style="text-decoration:underline; color:blue; font-weight:bold;" target="_blank">Terms and Conditions</a></p>
-</footer>
+  <title>The Rock of Salvation Church (TROSC)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    
+    :root {
+      --bg: #f8fafc;
+      --text: #1e293b;
+      --primary: #0f766e;
+      --primary-dark: #0d5f59;
+      --card: #ffffff;
+      --border: #e2e8f0;
+      --muted: #64748b;
+      --light: #f0fdfa;
+      --accent: #14b8a6;
+    }
+    
+    [data-theme="dark"] {
+      --bg: #0f172a;
+      --text: #e2e8f0;
+      --primary: #2dd4bf;
+      --primary-dark: #14b8a6;
+      --card: #1e293b;
+      --border: #334155;
+      --muted: #94a3b8;
+      --light: #0f766e22;
+      --accent: #5eead4;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      transition: background 0.5s ease, color 0.5s ease;
+    }
+    
+    h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--primary); letter-spacing: -0.5px; }
+    
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+    
+    header {
+      background: var(--card);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      transition: background 0.4s;
+    }
+    
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+    
+    .logo-area { display: flex; align-items: center; gap: 14px; }
+    .logo { width: 58px; height: 58px; object-fit: contain; border-radius: 10px; }
+    .logo-text h1 { font-size: 1.55rem; font-weight: 700; }
+    .logo-text p { font-size: 0.9rem; color: var(--muted); margin-top: -5px; }
+    
+    .hamburger { 
+      display: none; 
+      flex-direction: column; 
+      gap: 5px; 
+      background: none; 
+      border: none; 
+      cursor: pointer; 
+      padding: 12px; 
+    }
+    .hamburger span { 
+      width: 28px; height: 3px; 
+      background: var(--text); 
+      border-radius: 2px; 
+      transition: all 0.4s ease; 
+    }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(6px,6px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(8px,-6px); }
+    
+    nav.main-nav {
+      display: flex;
+      gap: 32px;
+    }
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.05rem;
+      transition: color 0.3s, transform 0.3s;
+    }
+    nav a:hover, nav a.active { color: var(--primary); transform: translateY(-3px); }
+    
+    .header-right { display: flex; align-items: center; gap: 20px; }
+    
+    .theme-toggle {
+      background: none;
+      border: none;
+      font-size: 1.6rem;
+      cursor: pointer;
+      padding: 10px;
+      border-radius: 50%;
+      transition: all 0.3s;
+    }
+    .theme-toggle:hover { background: rgba(0,0,0,0.07); transform: rotate(15deg); }
+    [data-theme="dark"] .theme-toggle:hover { background: rgba(255,255,255,0.12); }
+    .theme-toggle .sun { display: inline; }
+    .theme-toggle .moon { display: none; }
+    .theme-toggle.dark .sun { display: none; }
+    .theme-toggle.dark .moon { display: inline; }
+    
+    .btn {
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-4px); box-shadow: 0 8px 20px rgba(15,118,110,0.3); }
+    
+    .page {
+      display: none;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      padding: 50px 0 100px;
+    }
+    .page.active { display: block; opacity: 1; transform: translateY(0); }
+    
+    .hero {
+      min-height: 85vh;
+      background-size: cover;
+      background-position: center;
+      color: white;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.45), rgba(0,0,0,0.75));
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 960px; margin: 0 auto; padding: 0 20px; }
+    .hero h1 { font-size: 4.8rem; margin-bottom: 0.6rem; line-height: 1; }
+    .hero h2 { font-size: 2.6rem; margin-bottom: 1.8rem; opacity: 0.92; }
+    .lead { font-size: 1.45rem; max-width: 720px; margin: 0 auto 3rem; }
+    
+    .card {
+      background: var(--card);
+      padding: 2.4rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+      border: 1px solid var(--border);
+      transition: all 0.4s ease;
+    }
+    .card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.14);
+    }
+    
+    .grid-2 { display: grid; grid-template-columns: 1fr; gap: 2.2rem; }
+    .grid-3 { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+    
+    .section-title { text-align: center; font-size: 3rem; margin: 0 0 3rem; color: var(--primary); }
+    
+    footer {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #d1fae5;
+      padding: 80px 0 50px;
+      text-align: center;
+    }
+    .footer-links a { color: #a7f3d0; margin: 0 1.5rem; text-decoration: none; font-weight: 500; }
+    .footer-links a:hover { color: white; text-decoration: underline; }
+    
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      nav.main-nav {
+        position: absolute;
+        top: 100%;
+        left: 0; right: 0;
+        background: var(--card);
+        flex-direction: column;
+        padding: 24px 0;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        transform: translateY(-20px);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.45s ease;
+      }
+      nav.main-nav.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+      nav a { padding: 18px 30px; font-size: 1.2rem; text-align: center; display: block; }
+      .hero h1 { font-size: 3.6rem; }
+      .hero h2 { font-size: 2.2rem; }
+    }
+    
+    @media (min-width: 769px) {
+      .grid-2 { grid-template-columns: repeat(2, 1fr); }
+      .grid-3 { grid-template-columns: repeat(3, 1fr); }
+      .hero h1 { font-size: 6.2rem; }
+      .hero h2 { font-size: 3.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container header-inner">
+      <div class="logo-area">
+        <img src="Logo.png" alt="TROSC Logo" class="logo">
+        <div class="logo-text">
+          <h1>THE ROCK OF SALVATION CHURCH</h1>
+          <p>(TROSC)</p>
+        </div>
+      </div>
+
+      <button class="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="main-nav">
+        <a href="#home" class="active">Home</a>
+        <a href="#services">Services</a>
+        <a href="#events">Upcoming Events</a>
+        <a href="#about">About</a>
+      </nav>
+
+      <div class="header-right">
+        <button class="theme-toggle" aria-label="Toggle theme">
+          <span class="sun">☀️</span>
+          <span class="moon">🌙</span>
+        </button>
+        <a href="#about" class="btn btn-primary">Get Connected</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Home -->
+  <section id="home" class="page active">
+    <div class="hero" style="background-image: url('https://images.squarespace-cdn.com/content/v1/62670729ce9ff55122bef99f/b7ba0e64-a8c5-46b6-a44f-7b285799ec1a/Screen+Shot+2022-08-04+at+10.31.26+AM.png');">
+      <div class="hero-content">
+        <div style="background:rgba(255,255,255,0.92); color:var(--primary); padding:10px 24px; border-radius:50px; display:inline-block; margin-bottom:2rem; font-weight:600;">Welcome Home</div>
+        <h1>The Rock of Salvation Church</h1>
+        <h2>(TROSC)</h2>
+        <p class="lead">A place where lives are transformed, hope is restored, and Jesus is exalted.</p>
+        <div style="display:flex; gap:1.5rem; justify-content:center; flex-wrap:wrap;">
+          <a href="#services" class="btn" style="background:white; color:var(--primary); box-shadow:0 6px 18px rgba(0,0,0,0.12);">Join Us This Sunday</a>
+          <a href="#about" class="btn" style="border:2px solid white; color:white; box-shadow:none;">Learn More</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" style="padding:80px 0 60px;">
+      <div class="grid-2">
+        <div class="card">
+          <h2>Join Us This Week</h2>
+          <p>Experience heartfelt worship, sound teaching, community, and a family atmosphere.</p>
+        </div>
+        <div class="card" style="text-align:center;">
+          <h3>* NEW HERE? *</h3>
+          <p>We’d love to meet you. Click below to get connected.</p>
+          <a href="#about" class="btn btn-primary" style="margin-top:2rem;">Get Connected →</a>
+        </div>
+      </div>
+
+      <div style="margin:80px auto; max-width:860px; text-align:center;">
+        <h2>What We Believe</h2>
+        <div class="card">
+          <p style="font-size:1.28rem; line-height:1.8;">We believe Jesus is the Rock of our salvation and the foundation of our lives. Through the Word, worship, and fellowship, we grow in grace and truth.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="page">
+    <div class="hero" style="background-image: url('https://media.istockphoto.com/id/1138830205/video/support-each-other-to-success.jpg'); background-position: center 30%;">
+      <div class="hero-content">
+        <h1>Our Services</h1>
+        <p class="lead">Come worship, pray, study, and grow with us</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <h2 class="section-title">Weekly Services</h2>
+      <div class="grid-2">
+        <div class="card"><h3>Sunday Worship Service</h3><p>Every Sunday<br>8:00 AM – 9:00 AM (Sunday School)<br>9:00 AM – 12:00 PM (Worship)</p></div>
+        <div class="card"><h3>Wednesday Bible Study</h3><p>Every Wednesday<br>7:00 PM – 8:00 PM</p></div>
+        <div class="card"><h3>Thursday Prayer Meeting (Faith Clinic)</h3><p>Every Thursday<br>9:00 AM – 1:00 PM</p></div>
+        <div class="card"><h3>Friday Deliverance Meeting</h3><p>Every Friday<br>9:00 AM – 1:00 PM</p></div>
+      </div>
+
+      <h2 class="section-title" style="margin-top:70px;">Monthly Services</h2>
+      <div class="grid-2" style="max-width:760px; margin:0 auto;">
+        <div class="card"><h3>Friday Night Service</h3><p>Every second Friday<br>12:00 AM prompt</p></div>
+        <div class="card"><h3>Saturday Women Rally</h3><p>Every first Saturday<br>9:00 AM prompt</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events -->
+  <section id="events" class="page">
+    <div class="hero" style="background-image: url('https://thumbs.dreamstime.com/b/open-bible-cross-atop-sits-wooden-table-bathed-soft-light-creating-tranquil-atmosphere-perfect-reflection-332506569.jpg');">
+      <div class="hero-content">
+        <h1>Upcoming Events</h1>
+        <p class="lead">Stay tuned — God is doing something powerful</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="grid-3" style="margin-top:50px;">
+        <div class="card" style="text-align:center;">
+          <span style="color:var(--accent); font-size:1rem; text-transform:uppercase; font-weight:600;">Every Sunday</span>
+          <h3>Sunday Worship Service</h3>
+          <p style="margin:1.2rem 0;">8:00 AM – 12:00 PM</p>
+        </div>
+        <div class="card" style="text-align:center;">
+          <span style="color:var(--accent); font-size:1rem; text-transform:uppercase; font-weight:600;">Every Friday</span>
+          <h3>Deliverance Meeting</h3>
+          <p style="margin:1.2rem 0;">9:00 AM – 1:00 PM</p>
+        </div>
+        <div class="card" style="text-align:center;">
+          <span style="color:var(--accent); font-size:1rem; text-transform:uppercase; font-weight:600;">First Saturday</span>
+          <h3>Women Rally</h3>
+          <p style="margin:1.2rem 0;">9:00 AM prompt</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="page">
+    <div class="hero" style="background-image: url('https://th-thumbnailer.cdn-si-edu.com/AIMDjhpYfWHOZt9h-VH1v3A7QnU=/1026x684/filters:no_upscale():focal(4024x2683:4025x2684)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer_public/28/99/289983ec-97ae-4ffa-9f9f-ca7531635561/gettyimages-2234165020.jpg');">
+      <div class="hero-content">
+        <h1>About Us</h1>
+      </div>
+    </div>
+
+    <div class="container" style="max-width:960px;">
+      <p style="font-size:1.38rem; margin:3rem 0 2rem;">Welcome to <strong>The Rock of Salvation Church (TROSC)</strong> — a Bible-believing, spirit-filled church committed to raising kingdom-minded believers rooted in the word of God.</p>
+      
+      <div class="grid-2" style="margin:4rem 0;">
+        <div class="card"><p>At TROSC, we believe in the power of salvation through Christ, the leading of the Holy Spirit, and building on a strong foundation in faith — like standing on the Rock that never fails.</p></div>
+        <div class="card"><p>We are a family of worshippers passionate about prayer, teaching, service, and walking in the power and love of God.</p></div>
+      </div>
+
+      <h2 style="margin:4rem 0 2rem; text-align:center;">Our Mission</h2>
+      <ul style="list-style:none; font-size:1.2rem; max-width:820px; margin:0 auto;">
+        <li style="margin-bottom:1.6rem; padding-left:2rem; position:relative;">• <span style="position:absolute; left:0; color:var(--primary); font-size:2.2rem; line-height:1;">•</span> Preach the Gospel of Christ to all nations</li>
+        <li style="margin-bottom:1.6rem; padding-left:2rem; position:relative;">• <span style="position:absolute; left:0; color:var(--primary); font-size:2.2rem; line-height:1;">•</span> Raise strong disciples who walk in truth and power</li>
+        <li style="padding-left:2rem; position:relative;">• <span style="position:absolute; left:0; color:var(--primary); font-size:2.2rem; line-height:1;">•</span> Impact lives through spiritual and social transformation</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p style="font-size:1.1rem; margin-bottom:1.5rem;">© 2025 The Rock of Salvation Church (TROSC)</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a> • <a href="#">Terms and Conditions</a>
+      </div>
+    </div>
+  </footer>
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/2347078883518?text=Hello%20The%20Rock%20of%20Salvation%20Church%20(TROSC)%21%0A%0AI%20would%20like%20to%20know%20more%20about%3A%0A-%20Service%20times%0A-%20How%20to%20join%20the%20church%0A-%20Upcoming%20events%0A-%20Prayer%20request%0A%0AGod%20bless%20you." 
+   target="_blank" 
+   rel="noopener noreferrer"
+   style="position: fixed; bottom: 25px; right: 25px; z-index: 9999; display: flex; align-items: center; justify-content: center; width: 68px; height: 68px; background: linear-gradient(135deg, #25D366, #128C7E); color: white; border-radius: 50%; box-shadow: 0 8px 25px rgba(0,0,0,0.25); text-decoration: none; transition: all 0.3s ease;">
   
+  <!-- WhatsApp Icon (using emoji + fallback) -->
+  <span style="font-size: 42px; line-height: 1;">💬</span>
+  
+  <!-- Optional tooltip on hover (desktop) -->
+  <span style="position: absolute; right: 85px; top: 50%; transform: translateY(-50%); background: #111; color: white; padding: 10px 16px; border-radius: 8px; font-size: 14px; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.3); pointer-events: none;">
+    Chat with us on WhatsApp
+  </span>
+</a>
+
+<!-- Show tooltip only on hover (desktop) -->
+<style>
+  a[href^="https://wa.me"]:hover span:last-child {
+    opacity: 1;
+    visibility: visible;
+    right: 90px;
+  }
+  
+  @media (max-width: 768px) {
+    a[href^="https://wa.me"] {
+      bottom: 20px;
+      right: 20px;
+      width: 62px;
+      height: 62px;
+    }
+    a[href^="https://wa.me"] span:first-child {
+      font-size: 38px;
+    }
+  }
+</style>
+  <script>
+    const pages = document.querySelectorAll('.page');
+    const links = document.querySelectorAll('nav a');
+
+    function showPage(hash) {
+      const target = hash ? hash.substring(1) : 'home';
+      pages.forEach(p => p.classList.remove('active'));
+      document.getElementById(target)?.classList.add('active');
+      
+      links.forEach(l => {
+        l.classList.toggle('active', l.getAttribute('href') === hash || (!hash && l.getAttribute('href') === '#home'));
+      });
+      
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    window.addEventListener('hashchange', () => showPage(location.hash));
+    showPage(location.hash || '#home');
+
+    const ham = document.querySelector('.hamburger');
+    const nav = document.querySelector('.main-nav');
+    ham.addEventListener('click', () => {
+      ham.classList.toggle('active');
+      nav.classList.toggle('active');
+    });
+
+    document.querySelectorAll('nav a').forEach(a => {
+      a.addEventListener('click', () => {
+        ham.classList.remove('active');
+        nav.classList.remove('active');
+      });
+    });
+
+    const toggle = document.querySelector('.theme-toggle');
+    const html = document.documentElement;
+    const saved = localStorage.getItem('theme') || 'light';
+    html.setAttribute('data-theme', saved);
+    if (saved === 'dark') toggle.classList.add('dark');
+
+    toggle.addEventListener('click', () => {
+      let next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      toggle.classList.toggle('dark');
+      localStorage.setItem('theme', next);
+    });
+  </script>
+</body>
+</html>
